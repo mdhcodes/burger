@@ -16,7 +16,7 @@ var ORM = {
 
   // Insert a new row into the table.
   insertOne: function(tableName, burger, burgerCtrlFn) {
-    var queryString = "INSERT INTO " + tableName + ", " + burger + " SET ?";
+    var queryString = "INSERT INTO " + tableName + ", " + burger + " VALUES ?";
     connection.query(queryString, burger, function(err, data) {
       if(err) throw err;
       burgerCtrlFn(data);
@@ -30,7 +30,6 @@ var ORM = {
   updateOne: function(tableName, burger, condition, burgerCtrlFn) {
     var queryString = "UPDATE " + tableName + "SET ? WHERE ?";
     connection.query(queryString, burger, condition, function(err, data) {
-    function(err, data) {
       if(err) throw err;
       res.redirect('/');
     });

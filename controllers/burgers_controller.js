@@ -14,8 +14,8 @@ module.exports = function(app) {
 
   // API route to insert a new burger
   app.post('/', function(req, res) {
-    console.log('Body:', req.body.burger);
-    var burger = req.body.burger;
+    console.log('Body:', req.body);
+    var burger = req.body;
     Burger.insertOne(burger, function() {
       res.redirect('/');
     });

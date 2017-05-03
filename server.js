@@ -14,7 +14,7 @@ var app = express();
 //==========================================================
 // Set PORT variable using environment port or localhost.
 //==========================================================
-var PORT = process.env.PORT || 3003;
+var PORT = process.env.PORT || 3000;
 
 
 //==========================================================
