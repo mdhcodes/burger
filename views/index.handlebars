@@ -1,3 +1,21 @@
-// Setup the main.handlebars file so it's able to be used by Handlebars.
-// Setup the index.handlebars to have the template that Handlebars can render onto.
-// Create a button in index.handlebars that will submit the user input into the database.
+<h1>Eat-Da-Burger!</h1>
+
+<ol>
+  {{#each burgers}}
+  	<li>
+      {{this.burger_name}} <button type="submit">Devour It!</button>
+  	</li>
+  {{/each}}
+</ol>
+
+{{!-- Form should send a post command to the server --}}
+<form method="POST" action="/">
+    <input type="text" name="burger"><br>
+    <button type="submit">Submit</button>
+    <p>Enter a burger you want to eat and click the submit button.</p>
+</form>
+
+{{!-- Form should update the devoured state on the server --}}
+<form action="/?_method=PUT" method="POST">
+  <input type="text" name="id">
+</form>
