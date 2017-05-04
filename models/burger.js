@@ -18,14 +18,14 @@ var burger = {
     });
   },
 
-  insertOne: function(tableName, burger, burgerCtrlFn) {
-    orm.insertOne(tableName, burger, function(data) {
+  insertOne: function(burger, burgerCtrlFn) {
+    orm.insertOne(this.table, burger, function(data) {
       burgerCtrlFn(data);
     });
   },
 
-  updateOne: function(tableName, condition, burgerCtrlFn) {
-    orm.updateOne(tableName, condition, function(data) {
+  updateOne: function(condition, burgerCtrlFn) {
+    orm.updateOne(this.table, condition, function(data) {
       burgerCtrlFn(data);
     });
   }

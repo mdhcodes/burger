@@ -14,9 +14,11 @@ module.exports = function(app) {
 
   // API route to insert a new burger
   app.post('/', function(req, res) {
-    console.log('Body:', req.body);
-    var burger = req.body;
-    Burger.insertOne(burger, function() {
+    var burger = {
+      burger_name: req.body.burger
+    };
+    console.log('Body:', burger);
+    Burger.insertOne(burger, function(data) {
       res.redirect('/');
     });
   });
@@ -24,8 +26,9 @@ module.exports = function(app) {
 
   // API route to update a burger devoured state as true.
   app.put('/', function(req, res) {
-    console.log('ID:', req.body.id);
-    Burger.updateOne(condition, function() {
+    var condition = req.body.id;
+    console.log('ID:', condition);
+    Burger.updateOne(condition, function(data) {
       res.redirect('/');
     });
   });

@@ -1,16 +1,18 @@
+<img src="/assets/img/burgers.jpg" class="burger-pic" alt="Burgers">
 <h1>Eat-Da-Burger!</h1>
+<main>
+  <ol>
+    {{#each burgers}}
+    	<li>
+        {{this.burger_name}} <button type="submit">Devour It!</button>
+    	</li>
+    {{/each}}
+  </ol>
 
-<ol>
-  {{#each burgers}}
-  	<li>
-      {{this.burger_name}} <button type="submit">Devour It!</button>
-  	</li>
-  {{/each}}
-</ol>
-
-{{!-- Form should send a post command to the server --}}
-<form method="POST" action="/">
-    <input type="text" name="burger"><br>
-    <button type="submit">Submit</button>
-    <p>Enter a burger you want to eat and click the submit button.</p>
-</form>
+  {{!-- Form should send a post command to the server --}}
+  <form method="POST" action="/">
+      <input type="text" name="burger"><br>
+      <button type="submit">Submit</button>
+      <p>Enter a burger you want to eat and click the submit button.</p>
+  </form>
+</main>
