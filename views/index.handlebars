@@ -1,16 +1,44 @@
-<img src="/assets/img/burgers.jpg" class="burger-pic" alt="Burgers">
-<h1>Eat-Da-Burger!</h1>
+<header>
+  <img src="/assets/img/burgers.jpg" class="burger-pic" alt="Burgers">
+  <p>Photo by: <a href="https://unsplash.com/@blitzer">Niklas Rhöse</a></p>
+  <h1>Eat-Da-Burger!</h1>
+</header>
 <main>
-  <ol>
-    {{#each burgers}}
-    	<li>
-        {{this.burger_name}} <button type="submit">Devour It!</button>
-    	</li>
-    {{/each}}
-  </ol>
 
-  {{!-- Form should send a post command to the server --}}
-  <form method="POST" action="/">
+  {{!-- Create a div where is_devoured is false --}}
+  <div>
+    {{#each burgers}}
+      {{#unless is_devoured}}
+        <div class="devour-it">
+          {{this.id}}. {{this.burger_name}}
+        </div>
+        <div class="devour-btn-form">
+          <form action="/?_method=PUT" method="post">
+            <input type="hidden" name="id" value="{{this.id}}">
+            <input type="hidden" name="is_devoured" value="1">
+             <button type="submit" class="devour-it-btn">Devour It!</button>
+          </form>
+        </div>
+      {{/unless}}
+    {{/each}}
+  </div>
+
+
+  {{!-- Create a div where is_devoured is true --}}
+  <div class="devoured">
+    {{#each burgers}}
+      {{#if is_devoured}}
+        <div class="devoured">
+          {{this.id}}. {{this.burger_name}}
+        </div>
+      {{/if}}
+    {{/each}}
+  </div>
+
+
+  {{!-- Form will send a post command to the server --}}
+  {{!-- Create a new burger and save it in the database --}}
+  <form method="POST" action="/" class="add-a-burger">
       <input type="text" name="burger"><br>
       <button type="submit">Submit</button>
       <p>Enter a burger you want to eat and click the submit button.</p>

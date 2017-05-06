@@ -1,10 +1,8 @@
 //  Import orm.js
 var orm = require('../config/orm');
 
-/*
-Create the code that will call the ORM functions using burger specific input for the ORM.
-Export at the end of the burger.js file.
-*/
+
+//Create the code that will call the ORM functions using burger specific input.
 
 // call the orm to get the data
 var burger = {
@@ -24,8 +22,8 @@ var burger = {
     });
   },
 
-  updateOne: function(condition, burgerCtrlFn) {
-    orm.updateOne(this.table, condition, function(data) {
+  updateOne: function(values, condition, burgerCtrlFn) {
+    orm.updateOne(this.table, values, condition, function(data) {
       burgerCtrlFn(data);
     });
   }

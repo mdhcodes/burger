@@ -26,9 +26,14 @@ module.exports = function(app) {
 
   // API route to update a burger devoured state as true.
   app.put('/', function(req, res) {
-    var condition = req.body.id;
-    console.log('ID:', condition);
-    Burger.updateOne(condition, function(data) {
+    // set is_devoured to true || 1
+    var values = req.body.is_devoured;
+    var condition = {
+      id: req.body.id
+    }
+    console.log('Values:', values);
+    console.log('ID:', condition.id);
+    Burger.updateOne(values, condition, function(data) {
       res.redirect('/');
     });
   });
