@@ -25,11 +25,11 @@ module.exports = function(app) {
 
 
   // API route to update a burger devoured state as true.
-  app.put('/', function(req, res) {
+  app.put('/:id', function(req, res) {
     // set is_devoured to true || 1
-    var values = req.body.is_devoured;
+    var values = req.body.devoured;
     var condition = {
-      id: req.body.id
+      id: req.params.id
     }
     console.log('Values:', values);
     console.log('ID:', condition.id);
@@ -37,5 +37,8 @@ module.exports = function(app) {
       res.redirect('/');
     });
   });
+
+
+  
 
 };

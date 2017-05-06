@@ -28,13 +28,24 @@ var ORM = {
   // If devoured button is clicked, update the devoured boolean state and move the item on screen to the right.
   // Update a burger.
   updateOne: function(tableName, values, condition, burgerCtrlFn) {
-    var queryString = "UPDATE " + tableName + " SET ? WHERE ?";
-    connection.query(queryString, values, condition, function(err, data) {
+    var queryString = "UPDATE " + tableName + " SET `devoured`=1 WHERE ?";
+    connection.query(queryString, [condition], function(err, data) {
       if(err) throw err;
       burgerCtrlFn(data);
     });
   }
 
+/*
+  // If devoured button is clicked, update the devoured boolean state and move the item on screen to the right.
+  // Update a burger.
+  deleteOne: function(tableName, condition, burgerCtrlFn) {
+    var queryString = "DELETE FROM " + tableName + " WHERE ?";
+    connection.query(queryString, [condition], function(err, data) {
+      if(err) throw err;
+      burgerCtrlFn(data);
+    });
+  }
+*/
 };
 
 module.exports = ORM;

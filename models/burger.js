@@ -23,7 +23,7 @@ var burger = {
   },
 
   updateOne: function(values, condition, burgerCtrlFn) {
-    orm.updateOne(this.table, values, condition, function(data) {
+    orm.updateOne(this.table, {devoured: true}, condition, function(data) {
       burgerCtrlFn(data);
     });
   }

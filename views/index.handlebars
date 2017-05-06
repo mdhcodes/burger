@@ -5,17 +5,19 @@
 </header>
 <main>
 
+
   {{!-- Create a div where is_devoured is false --}}
-  <div>
+  <div class="row">
+    <div class="col-xs-6">
     {{#each burgers}}
-      {{#unless is_devoured}}
+      {{#unless this.devoured}}
         <div class="devour-it">
           {{this.id}}. {{this.burger_name}}
         </div>
         <div class="devour-btn-form">
-          <form action="/?_method=PUT" method="post">
-            <input type="hidden" name="id" value="{{this.id}}">
-            <input type="hidden" name="is_devoured" value="1">
+          <form action="/{{this.id}}?_method=PUT" method="POST">
+            <!-- <input type="hidden" name="id" value="{{this.id}}"> -->
+            <!-- <input type="hidden" name="is_devoured" value="0"> -->
              <button type="submit" class="devour-it-btn">Devour It!</button>
           </form>
         </div>
@@ -25,16 +27,25 @@
 
 
   {{!-- Create a div where is_devoured is true --}}
+  <div class="col-xs-6">
   <div class="devoured">
     {{#each burgers}}
-      {{#if is_devoured}}
+      {{#if this.devoured}}
         <div class="devoured">
           {{this.id}}. {{this.burger_name}}
+
+            <form action="/{{this.id}}?_method=PUT" method="POST">
+              <!-- <input type="hidden" name="id" value="{{this.id}}"> -->
+              <input type="hidden" name="devoured" value="true"> <!-- true -->
+               <!-- <button type="submit" class="devour-it-btn">Devour It!</button> -->
+            </form>
+
         </div>
       {{/if}}
     {{/each}}
   </div>
-
+</div>
+</div><!-- end row -->
 
   {{!-- Form will send a post command to the server --}}
   {{!-- Create a new burger and save it in the database --}}
