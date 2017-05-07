@@ -2,7 +2,7 @@
 Node, Express, and Handlebars
 
 # Overview
-Burger App is a burger logger utilizing MySQL, Node, Express, Handlebars and a homemade ORM. Following the MVC design pattern, Node and MySQL query and route data while Handlebars generates HTML.
+Burger App is a burger logger utilizing MySQL, Node, Express, Handlebars and a homemade ORM. Following the MVC design pattern, Node and MySQL query will route data while Handlebars generates HTML.
 
 Eat-Da-Burger! is a restaurant app that lets users input the names of burgers they'd like to eat.
 
