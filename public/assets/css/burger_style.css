@@ -24,13 +24,9 @@ main {
   padding: 20px 0;
 }
 
-.to-devour {
-}
-
 .devour-it {
   width: 300px;
   padding: 20px;
-  float: left;
 }
 
 .devour-btn-form {
@@ -39,6 +35,7 @@ main {
 
 .devour-it-btn {
   padding: 8px 10px;
+  display: inline !important;
 }
 
 .devour-it {
@@ -48,8 +45,8 @@ main {
 
 .devoured {
   width: 300px;
-  float: right;
-  outline: solid #333;
+  border: 1px solid;
+  background: #bcb8aa;
 }
 
 .add-a-burger {

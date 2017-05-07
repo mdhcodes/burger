@@ -11,18 +11,16 @@ module.exports = function(app) {
     });
   });
 
-
   // API route to insert a new burger
   app.post('/', function(req, res) {
     var burger = {
       burger_name: req.body.burger
     };
     console.log('Body:', burger);
-    Burger.insertOne(burger, function(data) {
+    Burger.insertOne(burger, function() {
       res.redirect('/');
     });
   });
-
 
   // API route to update a burger devoured state as true.
   app.put('/:id', function(req, res) {
@@ -33,12 +31,19 @@ module.exports = function(app) {
     }
     console.log('Values:', values);
     console.log('ID:', condition.id);
-    Burger.updateOne(values, condition, function(data) {
+    Burger.updateOne(values, condition, function() {
       res.redirect('/');
     });
   });
 
-
-  
+  // API route to delete a burger.
+  app.delete('/:id', function(req, res) {
+    var condition = {
+      id: req.params.id
+    }
+    Burger.deleteOne(condition, function() {
+      res.redirect('/');
+    });
+  });
 
 };

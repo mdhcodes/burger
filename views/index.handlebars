@@ -5,10 +5,9 @@
 </header>
 <main>
 
-
   {{!-- Create a div where is_devoured is false --}}
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-xs-6 col-md-4">
     {{#each burgers}}
       {{#unless this.devoured}}
         <div class="devour-it">
@@ -16,8 +15,6 @@
         </div>
         <div class="devour-btn-form">
           <form action="/{{this.id}}?_method=PUT" method="POST">
-            <!-- <input type="hidden" name="id" value="{{this.id}}"> -->
-            <!-- <input type="hidden" name="is_devoured" value="0"> -->
              <button type="submit" class="devour-it-btn">Devour It!</button>
           </form>
         </div>
@@ -25,33 +22,34 @@
     {{/each}}
   </div>
 
+    {{!-- Form will send a post command to the server --}}
+    {{!-- Create a new burger and save it in the database --}}
+  <div class="col-xs-6 col-md-4">
+    <form method="POST" action="/" class="add-a-burger">
+        <input type="text" name="burger"><br>
+        <button type="submit">Submit</button>
+        <p>Enter a burger you want to eat and click the submit button.</p>
+    </form>
+  </div>
 
   {{!-- Create a div where is_devoured is true --}}
-  <div class="col-xs-6">
+  <div class="col-xs-6 col-md-4">
   <div class="devoured">
     {{#each burgers}}
       {{#if this.devoured}}
         <div class="devoured">
           {{this.id}}. {{this.burger_name}}
-
             <form action="/{{this.id}}?_method=PUT" method="POST">
-              <!-- <input type="hidden" name="id" value="{{this.id}}"> -->
-              <input type="hidden" name="devoured" value="true"> <!-- true -->
-               <!-- <button type="submit" class="devour-it-btn">Devour It!</button> -->
+              <input type="hidden" name="devoured" value="true">
             </form>
-
-        </div>
-      {{/if}}
-    {{/each}}
+            <form action="/{{this.id}}?_method=DELETE" method="POST">
+              <button class="btn btn-danger" type="submit">X</button>
+            </form>
+          </div>
+        {{/if}}
+      {{/each}}
+    </div>
   </div>
-</div>
 </div><!-- end row -->
 
-  {{!-- Form will send a post command to the server --}}
-  {{!-- Create a new burger and save it in the database --}}
-  <form method="POST" action="/" class="add-a-burger">
-      <input type="text" name="burger"><br>
-      <button type="submit">Submit</button>
-      <p>Enter a burger you want to eat and click the submit button.</p>
-  </form>
 </main>
