@@ -8,6 +8,6 @@ Eat-Da-Burger! is a restaurant app that lets users input the names of burgers th
 
 Whenever a user submits a burger's name, the app will display the burger on the left side of the page with a 'Devour It' button.
 
-When the user clicks the 'Devour It' button, the burger will move to the right side of the page.
+When the user clicks the 'Devour It' button, the burger will move to the right side of the page and a delete 'X' button will appear. If the user chooses to click the delete button, that burger will be removed from the database.
 
 Enjoy!
